@@ -477,6 +477,7 @@ button, input, select, textarea {
   background: rgba(153, 27, 27, 0.15);
   border: 1.5px dashed var(--accent-maroon);
   pointer-events: none;
+  box-sizing: border-box;
 }
 
 .autopsy-hotspot {
@@ -998,110 +999,84 @@ button, input, select, textarea {
 }
 
 .wood-shelf-top {
-  width: 70px;
-  height: 6px;
-  background: #78350f;
-  border-radius: 2px;
-  margin-bottom: 2px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  width: 120px;
+  height: 8px;
+  background: linear-gradient(90deg, #78350f 0%, #92400e 50%, #78350f 100%);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3), 0 4px 6px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  margin-bottom: 4px;
 }
 
 .wood-rack {
   width: 80px;
-  height: 95px;
-  border: 3px solid #78350f;
-  background: #b45309;
-  border-radius: 4px;
-  position: relative;
-  box-shadow: 2px 4px 8px rgba(0,0,0,0.25);
+  height: 12px;
+  background: linear-gradient(90deg, #78350f 0%, #92400e 50%, #78350f 100%);
+  border-radius: 6px;
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: flex-end;
-  padding-bottom: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  position: relative;
 }
 
 .test-tube-wrapper {
-  width: 22px;
-  height: 75px;
-  border: 2px solid rgba(255, 255, 255, 0.45);
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
-  background: rgba(255, 255, 255, 0.15);
+  width: 24px;
+  height: 60px;
   position: relative;
-  overflow: hidden;
-  box-shadow: inset 1px 1px 4px rgba(255, 255, 255, 0.3);
-  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 .test-tube-liquid {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 50px;
+  width: 16px;
+  height: 40px;
   background: #cbd5e1;
-  transition: background-color 0.8s ease;
+  border: 2px solid #64748b;
+  border-radius: 0 0 8px 8px;
+  box-shadow: inset 0 2px 4px rgba(255,255,255,0.3);
+  transition: background-color 0.3s ease;
 }
 
-.test-tube-wrapper::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 3px;
-  width: 2px;
-  height: 90%;
-  background: rgba(255, 255, 255, 0.35);
-  border-radius: 1px;
-  pointer-events: none;
-}
-
-/* ── Yellow Sticky Note (Post-it Style Notepad) ── */
+/* ── Notepad Sticky Notes ── */
 .notepad-container {
+  background: linear-gradient(135deg, #fffbaa 0%, #fffbaa 50%, #fef3c7 100%);
+  border: 1px solid #fbbf24;
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
   position: relative;
+  transform: rotate(-1.5deg);
 }
 
-/* Sticky Note Pushpin */
 .notepad-container::before {
   content: '';
   position: absolute;
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 12px;
-  height: 12px;
-  background: var(--accent-navy); /* Blue pin */
-  border-radius: 50%;
-  z-index: 5;
-  box-shadow: 
-    inset -2px -2px 4px rgba(0,0,0,0.5),
-    2px 3px 5px rgba(0,0,0,0.3);
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: repeating-linear-gradient(90deg, transparent, transparent 10px, #ddd 10px, #ddd 11px);
 }
 
 .notepad-textarea {
   width: 100%;
-  height: 200px;
-  border: 1px solid #fef08a;
-  background: linear-gradient(135deg, #fef08a 85%, #fef9c3 100%);
-  color: #854d0e;
-  padding: 16px;
-  font-size: 0.78rem;
-  line-height: 1.6;
+  height: 120px;
+  background: transparent;
+  border: none;
+  font-family: 'Caveat', cursive;
+  font-size: 0.9rem;
+  color: #78350f;
   resize: none;
-  font-family: var(--font-mono); /* Monospace notes */
-  border-bottom-right-radius: 20px 4px;
-  box-shadow: 
-    0 1px 2px rgba(0,0,0,0.05),
-    5px 5px 15px rgba(0,0,0,0.1),
-    inset -4px -4px 10px rgba(254, 240, 138, 0.5);
-  transform: rotate(-1deg);
-}
-
-.notepad-textarea:focus {
   outline: none;
-  border-color: #fde047;
+  line-height: 1.8;
 }
 
-/* ── Deduction Form ── */
+.notepad-textarea::placeholder {
+  color: #d97706;
+  opacity: 0.6;
+}
+
+/* ── Deduction Matrix Form ── */
 .deduction-form {
   display: flex;
   flex-direction: column;
@@ -1119,104 +1094,124 @@ button, input, select, textarea {
   font-weight: 700;
   color: #94a3b8;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .form-select {
-  width: 100%;
-  padding: 10px 10px;
-  border: 1px solid #374151;
-  border-radius: 1px;
-  font-size: 0.78rem;
-  background: #1f2937;
-  color: #f3f4f6;
-  transition: border-color 0.15s ease;
-  min-height: 40px; /* Touch friendly default */
+  padding: 8px;
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px solid #cbd5e1;
+  border-radius: 2px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.form-select:hover {
+  border-color: #94a3b8;
 }
 
 .form-select:focus {
-  border-color: #38bdf8;
   outline: none;
+  border-color: var(--accent-navy);
+  background: #eff6ff;
 }
 
 .solve-btn {
-  background: #2563eb;
+  padding: 8px 16px;
+  background: var(--accent-maroon);
   color: #ffffff;
   border: none;
-  padding: 12px;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
-  border-radius: 2px;
   cursor: pointer;
-  transition: background-color 0.15s ease, transform 0.1s ease;
-  margin-top: 8px;
-  min-height: 44px; /* Touch target */
+  transition: all 0.15s ease;
+  border-radius: 2px;
+  margin-top: 4px;
 }
 
 .solve-btn:hover {
-  background: #1d4ed8;
-}
-
-.solve-btn:active {
-  transform: scale(0.98);
+  background: #7f1d1d;
+  box-shadow: 0 4px 8px rgba(153, 27, 27, 0.3);
 }
 
 .feedback-banner {
+  padding: 10px 12px;
+  font-size: 0.7rem;
   border-radius: 2px;
-  padding: 12px;
-  font-size: 0.75rem;
-  line-height: 1.4;
-  display: none;
+  margin-top: 8px;
+  font-weight: 600;
+  transition: all 0.15s ease;
 }
 
 .feedback-banner.error {
   background: #fee2e2;
-  border: 1px solid #fecaca;
   color: #991b1b;
-  display: block;
+  border: 1px solid #fecaca;
 }
 
-/* ============================================================
-   VICTORY MODAL OVERLAY
-   ============================================================ */
+.feedback-banner.hidden {
+  display: none;
+}
+
+/* ── Modal Victory Overlay ── */
 .modal-overlay {
   position: fixed;
-  inset: 0;
-  z-index: 10000;
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(4px);
-  display: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
 .modal-overlay.visible {
-  display: flex;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .modal-content {
   background: #ffffff;
-  border: 2px solid #0f172a;
-  border-radius: 2px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  width: 100%;
-  max-width: 560px;
+  border: 2px solid var(--accent-navy);
+  border-radius: 4px;
   padding: 32px;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
   position: relative;
+  animation: modal-slide-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modal-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .modal-close-btn {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 16px;
+  right: 16px;
   background: transparent;
   border: none;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: var(--text-muted);
   cursor: pointer;
-  line-height: 1;
+  transition: color 0.15s ease;
 }
 
 .modal-close-btn:hover {
@@ -1224,293 +1219,216 @@ button, input, select, textarea {
 }
 
 .success-badge {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
+  width: 60px;
+  height: 60px;
   background: #dcfce7;
-  color: #166534;
+  border: 3px solid #15803d;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
+  margin: 0 auto 16px;
+  color: #15803d;
+}
+
+.success-badge svg {
+  width: 32px;
+  height: 32px;
 }
 
 .modal-title {
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   font-weight: 800;
-  color: var(--text-primary);
+  text-align: center;
+  color: var(--accent-navy);
   text-transform: uppercase;
+  letter-spacing: 1px;
   margin-bottom: 4px;
-  letter-spacing: 0.8px;
 }
 
 .modal-subtitle {
-  font-size: 0.75rem;
-  color: var(--accent-blue);
+  font-size: 0.9rem;
   font-weight: 700;
+  text-align: center;
+  color: var(--text-secondary);
   margin-bottom: 20px;
 }
 
 .modal-body {
   font-size: 0.8rem;
-  line-height: 1.5;
+  line-height: 1.6;
   color: var(--text-secondary);
-  background: #f8fafc;
-  border: 1px solid var(--border-color);
-  padding: 16px;
-  max-height: 250px;
-  overflow-y: auto;
-  margin-bottom: 20px;
+  text-align: justify;
 }
 
 .modal-body p {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
-.modal-body p:last-child {
-  margin-bottom: 0;
+.modal-body strong {
+  color: var(--text-primary);
 }
 
 .modal-action-btn {
-  background: #0f172a;
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--accent-navy);
   color: #ffffff;
   border: none;
-  padding: 12px;
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: 0.8rem;
+  font-weight: 800;
   text-transform: uppercase;
-  border-radius: 2px;
-  width: 100%;
   cursor: pointer;
-  min-height: 44px;
+  border-radius: 2px;
+  margin-top: 20px;
+  transition: background-color 0.15s ease;
 }
 
 .modal-action-btn:hover {
-  background: #1e293b;
+  background: var(--accent-navy-hover);
 }
 
 /* ============================================================
-   RESPONSIVE LAYOUT & MOBILE OVERRIDES (NON-DESTRUCTIVE)
+   MOBILE RESPONSIVE (Under 1100px width)
    ============================================================ */
-:root {
-  --border-color: #cbd5e1;
-}
-
-/* Prevent text-size auto-adjust and ensure media scale */
-html, body {
-  -webkit-text-size-adjust: 100%;
-}
-
-/* Make all media responsive */
-img, picture, video, iframe, svg {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Utility used by JS to hide panels on small screens */
-.hidden-mobile {
-  display: none !important;
-}
-
-/* Improve tappable target sizes globally */
-button, .verify-btn, .solve-btn, .modal-action-btn, .nav-toggle {
-  min-height: 44px;
-  padding: 0.6rem 0.9rem;
-}
-
-/* Mobile & Tablet breakpoint */
 @media (max-width: 1100px) {
-  body {
-    overflow: auto; /* allow page scroll on small screens */
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* Show mobile header and sub-nav which are hidden on desktop */
-  .mobile-header-tabs {
-    display: flex !important;
-    align-items: center;
-  }
-  
-  .mobile-sub-nav {
-    display: flex !important;
-  }
-
-  /* Stack layout vertically so panels flow on small screens */
+  /* Hide desktop layout, show mobile view */
   .workspace-container {
-    display: block;
-    width: 100%;
-    min-height: 100dvh;
-    height: auto;
+    grid-template-columns: 1fr;
   }
 
-  /* Hide the large left sidebar on mobile to free space */
-  .sidebar {
+  .sidebar,
+  .right-panel {
+    display: none;
+  }
+
+  .mobile-header-tabs,
+  .mobile-sub-nav {
+    display: flex;
+  }
+
+  .hidden-mobile {
     display: none !important;
   }
 
-  /* Main workspace and right-panel become full-width stacked blocks */
-  .main-workspace, .right-panel {
-    width: 100% !important;
-    box-shadow: none !important;
-    border-left: none !important;
-    border-right: none !important;
-    padding: 12px !important;
-  }
-
-  /* The app's JS toggles .hidden-mobile to switch which panel is visible */
-  .main-workspace.hidden-mobile, .right-panel.hidden-mobile {
-    display: none !important;
-  }
-
-  /* Make tab panels full-width and remove visual tilt and heavy shadows */
-  .tab-panel {
-    transform: none !important;
-    padding: 20px !important;
-    margin: 0 0 12px 0 !important;
-    max-width: none !important;
-    border-radius: 8px !important;
-    box-shadow: none !important;
-    border: 1px solid var(--border-color) !important;
+  /* Adjust main workspace */
+  .main-workspace {
+    height: calc(100vh - 50px);
   }
 
   .workspace-scroll {
-    padding: 16px !important;
+    padding: 20px 16px;
   }
 
-  /* Autopsy layout stacks the two columns */
+  .tab-panel {
+    padding: 20px 16px;
+    max-width: 100%;
+  }
+
+  /* Autopsy layout stacked on mobile */
   .autopsy-layout {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 12px !important;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
-  
+
+  /* Fix lividity card for mobile */
   .lividity-card {
-    width: 100% !important;
-    order: 2;
+    padding: 12px;
   }
-  
+
+  /* Adjust body graphic container for mobile screens */
   .body-graphic-container {
-    width: 100% !important;
-    height: auto !important;
+    width: 160px;
+    height: 250px;
   }
 
-  /* Reagent mixing: stack controls vertically on mobile */
-  .reagent-test-grid {
-    grid-template-columns: 1fr !important;
-    gap: 20px !important;
-    justify-items: center !important;
+  /* Scale lividity highlight proportionally for mobile */
+  .body-lividity-highlight {
+    top: 60px;
+    left: 25px;
+    width: 110px;
+    height: 140px;
+    border: 2px dashed var(--accent-maroon);
   }
 
-  .drawer-select-wrapper {
-    flex-direction: column !important;
-    width: 100% !important;
-    gap: 8px !important;
-  }
-  
-  .drawer-select-wrapper select,
-  .drawer-select-wrapper button {
-    width: 100% !important;
-    min-height: 44px !important;
-  }
-
-  .debunk-form-wrapper {
-    flex-direction: column !important;
-    width: 100% !important;
-    gap: 8px !important;
-  }
-  
-  .debunk-form-wrapper select,
-  .debunk-form-wrapper button {
-    width: 100% !important;
-    min-height: 44px !important;
-  }
-
-  /* Graphology and documents — single column */
+  /* Graphology cards responsive */
   .paper-docs-grid {
-    grid-template-columns: 1fr !important;
-  }
-  
-  .handwritten-paper {
-    min-height: auto !important;
-    padding: 12px !important;
-  }
-  
-  .handwritten-paper p {
-    font-size: 1.1rem !important;
+    grid-template-columns: 1fr;
   }
 
-  /* BAP layout: stack witness selector above transcript */
+  /* BAP layout responsive */
   .bap-layout {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr;
   }
-  
+
   .witness-selector-box {
-    flex-direction: row !important;
-    gap: 8px !important;
-    overflow-x: auto;
-    padding-bottom: 6px;
+    flex-direction: row;
+    gap: 4px;
   }
-  
+
   .witness-tab {
-    white-space: nowrap;
-    flex-shrink: 0;
+    flex: 1;
+    padding: 8px 6px;
+    font-size: 0.65rem;
   }
 
-  /* Notepad: make textarea usable on mobile */
-  .notepad-textarea {
-    width: 100% !important;
-    min-height: 120px !important;
-    resize: vertical !important;
-    padding: 10px !important;
-    border-radius: 6px !important;
-    border: 1px solid var(--border-color) !important;
+  /* Form controls responsive */
+  .form-select {
+    font-size: 0.7rem;
+    padding: 6px;
   }
 
-  /* Tables: avoid horizontal overflow by making them scroll within container */
-  .log-table-container {
-    overflow-x: auto !important;
-  }
-  
-  .log-table th, .log-table td {
-    font-size: 0.72rem !important;
-    padding: 8px !important;
+  .solve-btn {
+    padding: 10px;
+    font-size: 0.7rem;
   }
 
-  /* Reduce decorative clutter on mobile */
-  .paperclip {
-    display: none !important;
-  }
-  
-  .secret-stamp {
-    opacity: 0.06 !important;
-    transform: none !important;
-    left: 12px !important;
-    top: 12px !important;
-  }
-  
-  .folder-tab {
-    position: static !important;
-    margin-bottom: 8px !important;
+  /* Modal responsive */
+  .modal-content {
+    margin: 20px;
+    max-width: calc(100% - 40px);
+    padding: 24px;
   }
 }
 
-/* Small phones */
-@media (max-width: 420px) {
-  html {
-    font-size: 15px;
+/* ============================================================
+   EXTRA SMALL DEVICES (Under 480px)
+   ============================================================ */
+@media (max-width: 480px) {
+  .workspace-scroll {
+    padding: 16px 12px;
   }
-  
-  .mobile-tab-btn {
+
+  .tab-panel {
+    padding: 16px 12px;
+  }
+
+  .body-graphic-container {
+    width: 120px;
+    height: 180px;
+  }
+
+  /* Adjust highlight for very small screens */
+  .body-lividity-highlight {
+    top: 45px;
+    left: 18px;
+    width: 85px;
+    height: 105px;
+  }
+
+  .page-title {
+    font-size: 0.8rem;
+  }
+
+  .section-title {
     font-size: 0.75rem;
   }
-  
-  .sub-nav-btn {
-    padding: 6px 10px;
-    font-size: 0.72rem;
+
+  .modal-content {
+    padding: 20px;
   }
-  
-  .verify-btn, .solve-btn {
-    font-size: 0.95rem;
+
+  .modal-title {
+    font-size: 1rem;
   }
 }
