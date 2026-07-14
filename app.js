@@ -433,7 +433,7 @@ class BAPModule {
         this.debunkArea.innerHTML = `
           <div class="bap-debunk-form">
             <label class="form-label" style="font-size: 0.72rem; color: var(--text-secondary);">Bantah alibi makan luar kota Tersangka C dengan bukti:</label>
-            <div style="display: flex; gap: 8px; margin-top: 6px;">
+            <div class="debunk-form-wrapper" style="margin-top: 6px;">
               <select id="debunk-evidence-select" class="form-select" style="font-size: 0.75rem; padding: 4px 8px; max-width: 250px;">
                 <option value="">-- Pilih Bukti --</option>
                 <option value="autopsy">Laporan Otopsi: Kematian 20:00 - 21:00</option>
