@@ -1,68 +1,566 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BerkasPerkara</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .container {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            padding: 60px 40px;
-            text-align: center;
-            max-width: 500px;
-        }
-        h1 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 2.5em;
-        }
-        p {
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 1.1em;
-        }
-        .links {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        a {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #667eea;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-        a:hover {
-            background: #764ba2;
-        }
-    </style>
+    <title>Analisis Kasus: Anomali di Kamar 404</title>
+    <meta name="description" content="Aplikasi dashboard analisis kriminologi klasik kasus Kamar 404.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Inter:wght@400;500;600;700;800&family=Source+Code+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>🚀 BerkasPerkara</h1>
-        <p>Your web application is live on GitHub Pages</p>
-        <div class="links">
-            <a href="https://github.com/fadlhyfg23/BerkasPerkara">Repository</a>
+
+    <!-- ==========================================
+         MOBILE PORT HEADER TABS
+         ========================================== -->
+    <div class="mobile-header-tabs">
+        <button class="mobile-tab-btn active" id="mobile-tab-bukti">Analisis Bukti</button>
+        <button class="mobile-tab-btn" id="mobile-tab-deduksi">Papan Deduksi</button>
+    </div>
+
+    <div class="workspace-container">
+        
+        <!-- ==========================================
+             COLUMN 1: SIDEBAR NAVIGATION (STEEL PANEL)
+             ========================================== -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="case-badge">
+                    <span>Kasus Rahasia</span>
+                </div>
+                <h1 class="case-title">Kamar 404</h1>
+                <div class="case-subtitle">Analisis Rekayasa Bunuh Diri</div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-tab="autopsy">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <span>Laporan Otopsi</span>
+                </button>
+                
+                <button class="nav-item" data-tab="logs">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+                        <line x1="7" y1="2" x2="7" y2="22"></line>
+                        <line x1="17" y1="2" x2="17" y2="22"></line>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                    </svg>
+                    <span>Log Pintu & Laci</span>
+                </button>
+
+                <button class="nav-item" data-tab="graphology">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <span>Pemeriksaan Dokumen</span>
+                </button>
+                
+                <button class="nav-item" data-tab="bap">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>Kesaksian BAP</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="agent-profile">
+                    <div class="agent-avatar">PL</div>
+                    <div class="agent-info">
+                        <span class="agent-name">Penyelidik Utama</span>
+                        <span class="agent-role">Reserse Kriminal</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ==========================================
+             COLUMN 2: MAIN WORKSPACE (DRAFTING TABLE GRID)
+             ========================================== -->
+        <main class="main-workspace">
+            <header class="workspace-header">
+                <h2 class="page-title" id="page-header-title">Laporan Patologi (Otopsi) Forensik</h2>
+            </header>
+
+            <!-- ==========================================
+                 MOBILE SCROLLABLE SUB-NAV
+                 ========================================== -->
+            <div class="mobile-sub-nav">
+                <button class="sub-nav-btn active" data-sub-tab="autopsy">Otopsi</button>
+                <button class="sub-nav-btn" data-sub-tab="logs">Log Pintu & Laci</button>
+                <button class="sub-nav-btn" data-sub-tab="graphology">Pemeriksaan Dokumen</button>
+                <button class="sub-nav-btn" data-sub-tab="bap">BAP Saksi</button>
+            </div>
+
+            <div class="workspace-scroll">
+                
+                <!-- ── TAB 1: AUTOPSY FORENSICS ── -->
+                <section id="tab-autopsy" class="tab-panel">
+                    <div class="folder-tab">BERKAS: K-404-B</div>
+                    <div class="secret-stamp">SANGAT RAHASIA</div>
+                    <div class="paperclip"></div>
+                    <h3 class="section-title">Dokumen Rekam Medis Otopsi Jenazah</h3>
+                    
+                    <div class="autopsy-layout">
+                        <!-- Left: Doc Details -->
+                        <div class="autopsy-doc-body">
+                            <div class="autopsy-metadata-grid">
+                                <div>
+                                    <div class="autopsy-meta-label">Nama Korban</div>
+                                    <div class="autopsy-meta-value" id="autopsy-victim">Rian Pratama</div>
+                                </div>
+                                <div>
+                                    <div class="autopsy-meta-label">Usia</div>
+                                    <div class="autopsy-meta-value" id="autopsy-age">28 Tahun</div>
+                                </div>
+                                <div>
+                                    <div class="autopsy-meta-label">Estimasi Waktu Kematian</div>
+                                    <div class="autopsy-meta-value" id="autopsy-tod">20:00 - 21:00</div>
+                                </div>
+                                <div>
+                                    <div class="autopsy-meta-label">Lokasi Lebam Mayat</div>
+                                    <div class="autopsy-meta-value" id="autopsy-lividity">Punggung (Posterior)</div>
+                                </div>
+                            </div>
+
+                            <p>
+                                <strong>Temuan Fisik Leher:</strong><br>
+                                <span id="autopsy-neck">Jejak jeratan melingkar datar di leher bawah, tidak mengarah ke atas telinga.</span>
+                            </p>
+
+                            <!-- Scan Console -->
+                            <div class="autopsy-scan-console">
+                                <div id="autopsy-scan-status" class="autopsy-scan-status-indicator ready">SIAP MELAKUKAN PEMINDAIAN</div>
+                                <div id="autopsy-scan-details" style="font-size: 0.8rem; margin-top: 8px; line-height: 1.5; color: var(--text-secondary);">
+                                    Klik salah satu titik lingkaran merah sensor pada tubuh di samping kanan untuk mendeteksi anomali.
+                                </div>
+                            </div>
+
+                            <!-- Reagent Test Section (Hidden by default, shown once neck & back scanned) -->
+                            <div id="autopsy-chemical-section" class="hidden" style="margin-top: 24px; border-top: 1px dashed var(--border-color); padding-top: 20px;">
+                                <h4 style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--text-primary); margin-bottom: 12px;">Pengujian Toksikologi Cairan Paru</h4>
+                                <div style="display: grid; grid-template-columns: 1fr 120px; gap: 16px; align-items: start;">
+                                    
+                                    <!-- Dropdowns and Reagent Button -->
+                                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                                        <div style="display: flex; gap: 8px;">
+                                            <select id="reagent-a" class="form-select" style="font-size: 0.75rem; padding: 4px 8px; background: #ffffff; color: #000000; border: 1px solid #cbd5e1;">
+                                                <option value="">-- Pilih Reagen A --</option>
+                                                <option value="formalin">Reagen Formalin (Uji Pengawet)</option>
+                                                <option value="lieberman">Reagen Lieberman (Uji Anestetika)</option>
+                                                <option value="acid">Reagen Asam Klorida (Uji Logam)</option>
+                                            </select>
+                                            <select id="reagent-b" class="form-select" style="font-size: 0.75rem; padding: 4px 8px; background: #ffffff; color: #000000; border: 1px solid #cbd5e1;">
+                                                <option value="">-- Pilih Reagen B --</option>
+                                                <option value="marquis">Reagen Marquis (Uji Alkaloid)</option>
+                                                <option value="ninhidrin">Reagen Ninhidrin (Uji Protein)</option>
+                                                <option value="chloro-detect">Reagen Chloro-detect (Uji Halogenasi)</option>
+                                            </select>
+                                        </div>
+                                        <button class="verify-btn" id="btn-run-reagent" style="width: 100%;">Jalankan Tes Reagen</button>
+                                        <div id="reagent-result-text" style="margin-top: 6px;"></div>
+                                    </div>
+                                    
+                                    <!-- Wood Test Tube Rack Visual -->
+                                    <div class="rack-container">
+                                        <div class="wood-shelf-top"></div>
+                                        <div class="wood-rack">
+                                            <div class="test-tube-wrapper">
+                                                <div id="test-tube-liquid" class="test-tube-liquid"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 20px;">
+                                <strong>Kesimpulan Kedokteran Forensik:</strong>
+                                <ul id="autopsy-conclusions" style="list-style: decimal; padding-left: 20px; margin-top: 8px; line-height: 1.6;">
+                                    <li id="autopsy-empty-conclusion" style="color: var(--text-muted); font-style: italic;">[Menunggu pemindaian sensorik leher & punggung]</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Right: Body Lividity Graphic -->
+                        <div class="lividity-card">
+                            <div class="lividity-title">Pemindai Lokasi Sensorik</div>
+                            <div class="body-graphic-container">
+                                <!-- Silhouette SVG -->
+                                <svg class="body-silhouette" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="50" cy="30" r="18" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
+                                    <path d="M30 60 C30 60, 20 80, 20 120 C20 160, 35 190, 50 190 C65 190, 80 160, 80 120 C80 80, 70 60, 70 60 Z" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2"/>
+                                    <path d="M20 65 L5 120 M80 65 L95 120" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M35 190 L35 200 M65 190 L65 200" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round"/>
+
+                                    <circle class="autopsy-hotspot" data-area="neck" cx="50" cy="50" r="6" />
+                                    <circle class="autopsy-hotspot" data-area="back" cx="50" cy="110" r="10" />
+                                    <circle class="autopsy-hotspot" data-area="legs" cx="50" cy="180" r="8" />
+                                </svg>
+                                <div class="body-lividity-highlight" style="z-index: 1;"></div>
+                            </div>
+                            <div class="lividity-indicator-label">Pindai Titik Merah Sensor</div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ── TAB 2: SMART LOCK & KEY DRAWER LOGS ── -->
+                <section id="tab-logs" class="tab-panel hidden">
+                    <div class="folder-tab">BERKAS: K-404-L</div>
+                    <div class="secret-stamp">SANGAT RAHASIA</div>
+                    <div class="paperclip"></div>
+                    
+                    <!-- Smart Lock Logs Section -->
+                    <div class="log-section">
+                        <h3 class="section-title">Riwayat Log Akses Kunci Smart Lock</h3>
+                        <p class="chronology-text" style="font-size: 0.85rem; margin-bottom: 12px;">
+                            Data berikut ditarik dari memori pintu apartemen korban. Perhatikan tipe PIN dan jam penguncian.
+                        </p>
+                        <div class="log-table-container">
+                            <table class="log-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 15%">Waktu</th>
+                                        <th style="width: 15%">Operasi</th>
+                                        <th style="width: 30%">Pengguna</th>
+                                        <th style="width: 40%">Detail Transaksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="smartlock-table-body">
+                                    <!-- Log Smart Lock diisi oleh JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Lock PIN Decryption progress controls -->
+                        <div style="margin-top: 12px; display: flex; justify-content: flex-end; align-items: center; gap: 12px;">
+                            <div id="lock-progress-container" class="progress-container hidden" style="text-align: left; width: 220px;">
+                                <div id="lock-status-text" style="font-size: 0.65rem; font-family: var(--font-mono); color: var(--text-secondary); margin-bottom: 2px;">Mengurai: 0%</div>
+                                <div style="width: 100%; height: 6px; background: #cbd5e1; overflow: hidden;">
+                                    <div class="progress-fill" style="width: 0%; height: 100%; background: var(--accent-blue); transition: width 0.15s linear;"></div>
+                                </div>
+                            </div>
+                            <button class="verify-btn" id="btn-decrypt-lock" style="font-size: 0.75rem;">Dekripsi Pemilik PIN Master</button>
+                        </div>
+                    </div>
+
+                    <!-- Key Drawer Inspection Section -->
+                    <div class="log-section" style="margin-top: 28px; border-top: 1px dashed var(--border-color); padding-top: 20px;">
+                        <h3 class="section-title">Pemeriksaan Laci Kunci Kantor Administrasi</h3>
+                        <p class="chronology-text" style="font-size: 0.85rem; margin-bottom: 12px;">
+                            Master PIN darurat apartemen dicatat dalam berkas yang disimpan di dalam laci terkunci kantor administrasi. Periksa visual gagang laci di bawah ini.
+                        </p>
+                        
+                        <div class="drawer-inspect-box">
+                            <div class="drawer-visual">
+                                <div class="drawer-handle">
+                                    <div class="red-paint-smudge"></div>
+                                </div>
+                            </div>
+                            
+                            <div style="font-size: 0.8rem; line-height: 1.5; color: var(--text-secondary); margin-bottom: 12px;">
+                                <strong>Temuan Jejak Fisik:</strong> Gagang laci memiliki noda bercak cairan merah yang telah mengering. Hasil analisis laboratorium kriminologi membuktikan noda tersebut adalah cat besi anti-karat merah.
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                <label class="form-label" for="drawer-suspect-match" style="font-size: 0.7rem; color: var(--text-secondary);">Cocokkan noda cat merah laci dengan aktivitas tersangka:</label>
+                                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                    <select id="drawer-suspect-match" class="form-select" style="font-size: 0.75rem; flex: 1; min-width: 200px; background: #ffffff; color: #000000; border: 1px solid #cbd5e1;">
+                                        <option value="">-- Pilih Aktivitas Cocok --</option>
+                                        <option value="suspect-a-pc">Tersangka A: Sedang merakit PC dengan kabel merah di kamarnya.</option>
+                                        <option value="suspect-b-obat">Tersangka B: Membeli botol obat penenang kemasan merah.</option>
+                                        <option value="suspect-c-pagar">Tersangka C: Mengecat pagar koridor apartemen hari itu dengan cat anti-karat merah.</option>
+                                    </select>
+                                    <button class="verify-btn" id="btn-match-drawer">Uji Kesesuaian</button>
+                                </div>
+                                <div id="drawer-result-text" style="margin-top: 8px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ── TAB 3: HANDWRITING GRAPHOLOGY ── -->
+                <section id="tab-graphology" class="tab-panel hidden">
+                    <div class="folder-tab">BERKAS: K-404-D</div>
+                    <div class="secret-stamp">SANGAT RAHASIA</div>
+                    <div class="paperclip"></div>
+                    <h3 class="section-title">Analisis Grafologi Pembandingan Tulisan Tangan</h3>
+                    <p class="chronology-text" style="font-size: 0.85rem; margin-bottom: 16px;">
+                        Bandingkan sampel tulisan tangan asli korban pada Buku Harian dengan Surat Wasiat bunuh diri yang ditemukan di meja, serta contoh tulisan tangan Tersangka C pada kontrak sewa apartemen.
+                    </p>
+
+                    <div class="graphology-layout">
+                        <!-- Handwriting cards -->
+                        <div class="paper-docs-grid">
+                            <!-- Paper 1: Diary -->
+                            <div class="handwritten-paper" style="transform: rotate(-1deg);">
+                                <div class="paper-title">Buku Harian Rian (Asli)</div>
+                                <p style="font-style: italic;">
+                                    "Hari ini terasa sangat melelahkan sekali. Pekerjaan kantor menumpuk dan saya harus menyelesaikann<span class="letter-highlight" style="font-style: normal; font-weight: bold;">g</span>a malam ini juga di rumah..."
+                                </p>
+                                <div style="font-size: 0.65rem; color: #854d0e; margin-top: 16px; border-top: 1px dashed #fde047; padding-top: 6px;">
+                                    Ciri: Miring Kanan, ekor loop 'g' tertutup rapat.
+                                </div>
+                            </div>
+
+                            <!-- Paper 2: Suicide Note -->
+                            <div class="handwritten-paper" style="transform: rotate(0.5deg);">
+                                <div class="paper-title">Surat Wasiat (Bukti)</div>
+                                <p>
+                                    "Saya meminta maaf kepada seluruh kelurga. Saya sudah tidak sanggup la<span class="letter-highlight" style="font-weight: bold;">g</span>i melanjutkan beban hidup ini. Selamat tin<span class="letter-highlight" style="font-weight: bold;">g</span>al semuanya."
+                                </p>
+                                <div style="font-size: 0.65rem; color: #854d0e; margin-top: 16px; border-top: 1px dashed #fde047; padding-top: 6px;">
+                                    Ciri: Lurus Tegak, ekor loop 'g' terbuka lebar ke bawah.
+                                </div>
+                            </div>
+
+                            <!-- Paper 3: Tenancy Contract -->
+                            <div class="handwritten-paper" style="transform: rotate(-0.5deg);">
+                                <div class="paper-title">Kontrak Sewa Hendra (C)</div>
+                                <p>
+                                    "Dengan ini menyetujui biaya sewa apartemen bertan<span class="letter-highlight" style="font-weight: bold;">g</span>gun<span class="letter-highlight" style="font-weight: bold;">g</span> jawab penuh atas kerusakan fasilitas kamar..."
+                                </p>
+                                <div style="font-size: 0.65rem; color: #854d0e; margin-top: 16px; border-top: 1px dashed #fde047; padding-top: 6px;">
+                                    Ciri: Lurus Tegak, ekor loop 'g' terbuka lebar ke bawah.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Graphology Verification Controls -->
+                        <div class="graphology-controls">
+                            <h4 style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--text-primary); margin-bottom: 12px;">Parameter Karakteristik Surat Wasiat</h4>
+                            
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 12px;">
+                                <div class="form-group">
+                                    <label class="form-label" for="graph-slant" style="font-size: 0.65rem; color: var(--text-secondary);">Kemiringan Tulisan Wasiat:</label>
+                                    <select id="graph-slant" class="form-select" style="font-size: 0.75rem; background:#ffffff; color:#000000; border:1px solid #cbd5e1;">
+                                        <option value="">-- Pilih Kemiringan --</option>
+                                        <option value="miring-kanan">Miring ke Kanan (Identik Buku Harian)</option>
+                                        <option value="lurus-tegak">Tegak Lurus (Identik Kontrak Sewa C)</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label" for="graph-loop" style="font-size: 0.65rem; color: var(--text-secondary);">Ekor Bawah Huruf 'g':</label>
+                                    <select id="graph-loop" class="form-select" style="font-size: 0.75rem; background:#ffffff; color:#000000; border:1px solid #cbd5e1;">
+                                        <option value="">-- Pilih Bentuk Loop --</option>
+                                        <option value="loop-tertutup">Melingkar Tertutup (Identik Buku Harian)</option>
+                                        <option value="loop-terbuka">Terbuka Lebar ke Bawah (Identik Kontrak Sewa C)</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label" for="graph-space" style="font-size: 0.65rem; color: var(--text-secondary);">Pola Sambungan Spasi:</label>
+                                    <select id="graph-space" class="form-select" style="font-size: 0.75rem; background:#ffffff; color:#000000; border:1px solid #cbd5e1;">
+                                        <option value="">-- Pilih Pola Spasi --</option>
+                                        <option value="bersambung">Huruf Mengalir Bersambung (Identik Buku Harian)</option>
+                                        <option value="terputus-putus">Pola Karakter Terputus-putus (Identik Kontrak Sewa C)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button class="verify-btn" id="btn-run-graphology" style="width: 100%;">Jalankan Analisis Grafologi</button>
+                            <div id="graphology-result-text" style="margin-top: 12px;"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ── TAB 4: BAP TRANSCRIPTS ── -->
+                <section id="tab-bap" class="tab-panel hidden">
+                    <div class="folder-tab">BERKAS: K-404-S</div>
+                    <div class="secret-stamp">SANGAT RAHASIA</div>
+                    <div class="paperclip"></div>
+                    <h3 class="section-title">Hasil Pemeriksaan Interogasi Kriminal</h3>
+                    
+                    <div class="bap-layout">
+                        <!-- Witness selector -->
+                        <div class="witness-selector-box">
+                            <button class="witness-tab active" data-witness="suspect-a">Tersangka A</button>
+                            <button class="witness-tab" data-witness="suspect-b">Tersangka B</button>
+                            <button class="witness-tab" data-witness="suspect-c">Tersangka C</button>
+                        </div>
+                        
+                        <!-- Dialogue box -->
+                        <div style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
+                            <div class="bap-dialog-container">
+                                <div class="bap-witness-header">
+                                    <div class="bap-witness-name" id="bap-witness-name">Tersangka A (Rekan Kerja)</div>
+                                    <div class="bap-witness-alibi" id="bap-witness-alibi">Alibi: Streaming Game</div>
+                                </div>
+                                <div id="bap-dialog-box">
+                                    <!-- Dialog lines diisi oleh JS -->
+                                </div>
+                            </div>
+                            
+                            <!-- Interactive Debunk Area -->
+                            <div id="bap-debunk-area">
+                                <!-- Diisi secara dinamis oleh JS -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- ==========================================
+             COLUMN 3: RIGHT PANEL (PINS BOARD & DEDUCTION)
+             ========================================== -->
+        <aside class="right-panel">
+            <div>
+                <h3 class="panel-header-title">Papan Bukti (Clue Binder)</h3>
+                <div id="clue-binder-container" class="clue-binder-cards-box" style="padding-top: 8px;">
+                    <!-- Clue cards diisi secara dinamis -->
+                </div>
+            </div>
+
+            <!-- Sticky Note Notepad -->
+            <div class="notepad-container">
+                <h3 class="panel-header-title">Memo Penyelidik</h3>
+                <textarea class="notepad-textarea" placeholder="Tulis analisis lebam mayat posterior, kandungan obat bius kloroform, noda cat laci PIN Master, hasil grafologi tulisan tangan, atau alibi palsu pemilik apartemen di sini..."></textarea>
+            </div>
+
+            <div>
+                <h3 class="panel-header-title">Matriks Deduksi Silang</h3>
+                <div class="deduction-form">
+                    
+                    <!-- Dropdown 1: Physical medical -->
+                    <div class="form-group">
+                        <label class="form-label" for="deduction-physical">1. Kejanggalan Medis Forensik (Fisik):</label>
+                        <select class="form-select" id="deduction-physical">
+                            <!-- Diisi dinamis -->
+                        </select>
+                    </div>
+
+                    <!-- Dropdown 2: Physical document -->
+                    <div class="form-group">
+                        <label class="form-label" for="deduction-digital">2. Kejanggalan Dokumen Fisik:</label>
+                        <select class="form-select" id="deduction-digital">
+                            <!-- Diisi dinamis -->
+                        </select>
+                    </div>
+
+                    <!-- Dropdown 3: Red paint trace -->
+                    <div class="form-group">
+                        <label class="form-label" for="deduction-drawer-paint">3. Kejanggalan Jejak Fisik TKP:</label>
+                        <select class="form-select" id="deduction-drawer-paint">
+                            <!-- Diisi dinamis -->
+                        </select>
+                    </div>
+
+                    <!-- Dropdown 4: Smart lock entry -->
+                    <div class="form-group">
+                        <label class="form-label" for="deduction-smartlock">4. Kejanggalan Akses Masuk Pintu:</label>
+                        <select class="form-select" id="deduction-smartlock">
+                            <!-- Diisi dinamis -->
+                        </select>
+                    </div>
+
+                    <!-- Dropdown 5: Suspect -->
+                    <div class="form-group">
+                        <label class="form-label" for="deduction-suspect">5. Pelaku Utama & Skenario:</label>
+                        <select class="form-select" id="deduction-suspect">
+                            <!-- Diisi dinamis -->
+                        </select>
+                    </div>
+
+                    <div id="deduction-feedback" class="feedback-banner hidden"></div>
+
+                    <button class="solve-btn" id="btn-deduction-submit">Kirim Tuduhan Resmi</button>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- ==========================================
+         VICTORY MODAL OVERLAY
+         ========================================== -->
+    <div id="victory-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-btn" id="btn-modal-close">&times;</button>
+            <div class="success-badge">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+            </div>
+            <h3 class="modal-title">ANALISIS SEMPURNA</h3>
+            <h4 class="modal-subtitle">Rekayasa Gantung Diri Kamar 404 Terbongkar</h4>
+            
+            <div class="modal-body">
+                <p>
+                    <strong>Laporan Deduksi Resmi Penyelidik Utama:</strong>
+                </p>
+                <p>
+                    Anda berhasil membuktikan secara mutlak bahwa kematian Rian Pratama adalah kasus **pembunuhan berencana yang direkayasa seolah-olah bunuh diri (Staged Suicide)**.
+                </p>
+                <p>
+                    Lebam mayat (*hypostasis/lividity*) yang menetap di **punggung** dan temuan cairan **kloroform** pada paru-paru korban membuktikan korban dibius hingga pingsan lalu dibunuh dalam posisi telentang di lantai kamar antara pukul 20:00 - 21:00. Korban tidak mati akibat berat tubuhnya saat menggantung, melainkan dicekik di lantai terlebih dahulu menggunakan jeratan melingkar datar.
+                </p>
+                <p>
+                    **Tersangka C (Hendra Wijaya - Pemilik Apartemen)** adalah pelaku tunggal. Ia memanfaatkan **Master PIN** darurat miliknya untuk masuk ke apartemen korban dan keluar kembali sembari mengunci pintu dari luar pukul 21:30.
+                </p>
+                <p>
+                    Hal ini terbukti secara fisik dari bercak **noda cat anti-karat merah** pada gagang laci kunci kantor administrasi tempat PIN Master disimpan, yang cocok dengan cat pagar besi anti-karat koridor yang dilakukan Hendra pagi itu.
+                </p>
+                <p>
+                    Untuk menyamarkan jam kematian, pelaku **memalsukan surat wasiat korban** di meja. Namun, uji grafologi membuktikan bahwa karakteristik tulisan (ekor huruf 'g' terbuka lebar, kemiringan lurus tegak, spasi terputus) adalah identik dengan contoh tulisan tangan Hendra pada kontrak sewa apartemen.
+                </p>
+            </div>
+
+            <button class="modal-action-btn" id="btn-modal-close-action">Tutup Berkas Perkara</button>
         </div>
     </div>
+
+    <!-- ==========================================
+         WELCOME / BRIEFING MODAL OVERLAY
+         ========================================== -->
+    <div id="briefing-modal" class="modal-overlay visible">
+        <div class="modal-content" style="max-width: 600px;">
+            <button class="modal-close-btn" id="btn-briefing-close">&times;</button>
+            <div class="case-badge" style="margin-bottom: 12px; background: var(--accent-navy);">
+                <span>Instruksi Penyelidikan</span>
+            </div>
+            <h3 class="modal-title">BRIEFING AWAL PERKARA</h3>
+            <h4 class="modal-subtitle" style="color: var(--accent-maroon);">Kasus Kamar 404: Dugaan Rekayasa Bunuh Diri</h4>
+            
+            <div class="modal-body" style="max-height: 350px;">
+                <p>
+                    Selamat sore detektif Juni.
+                </p>
+                <p>
+                    <strong>Kronologi Kejadian:</strong><br>
+                    Korban bernama Rian Pratama (28 tahun) ditemukan tewas tergantung di dalam unit apartemen Kamar 404 miliknya. Pemilik apartemen menyatakan korban melakukan bunuh diri karena depresi. Namun, pihak keluarga mencurigai adanya kejanggalan fisik dan menuntut penyelidikan mendalam.
+                </p>
+                <p>
+                    <strong>Tugas Anda sebagai Penyelidik Utama:</strong><br>
+                    Bongkar rekayasa pembunuhan ini dengan memverifikasi bukti-bukti fisik dan dokumen pada meja kerja Anda:
+                </p>
+                <ol style="padding-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 0.78rem; color: var(--text-secondary);">
+                    <li><strong>Laporan Otopsi:</strong> Pindai titik sensor tubuh jenazah untuk mencari anomali lebam mayat dan posisi jeratan leher. Lakukan tes reagen kimia pada cairan paru korban untuk mendeteksi kandungan kloroform (obat bius).</li>
+                    <li><strong>Log Pintu & Laci:</strong> Dekripsi log smart lock untuk membongkar pemilik PIN Master Slot 99 dan cari kecocokan noda cat besi anti-karat merah pada gagang laci kunci kantor administrasi.</li>
+                    <li><strong>Grafologi Dokumen:</strong> Analisis parameter kemiringan, bentuk loop bawah huruf 'g', dan pola spasi spasi surat wasiat korban untuk membuktikan pemalsuan dokumen.</li>
+                    <li><strong>BAP Saksi:</strong> Interogasi saksi-saksi dan bantah alibi makan luar kota Tersangka C dengan mencocokkannya dengan log waktu Smart Lock.</li>
+                </ol>
+                <p>
+                    Kumpulkan seluruh **7 Petunjuk Penting** pada Papan Bukti di sebelah kanan (atau di tab Papan Deduksi pada tampilan HP), lalu susun kesimpulan Anda pada Matriks Deduksi Silang untuk mengirimkan tuduhan resmi.
+                </p>
+            </div>
+
+            <button class="modal-action-btn" id="btn-briefing-start" style="background: var(--accent-maroon); min-height: 44px;">Mulai Penyelidikan</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
