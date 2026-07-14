@@ -12,15 +12,14 @@
 </head>
 <body>
 
-    <!-- ==========================================
-         MOBILE PORT HEADER TABS
-         ========================================== -->
-    <div class="mobile-header-tabs">
-        <button class="mobile-tab-btn active" id="mobile-tab-bukti">Analisis Bukti</button>
-        <button class="mobile-tab-btn" id="mobile-tab-deduksi">Papan Deduksi</button>
-    </div>
-
     <div class="workspace-container">
+        <!-- ==========================================
+             MOBILE PORT HEADER TABS
+             ========================================== -->
+        <div class="mobile-header-tabs">
+            <button class="mobile-tab-btn active" id="mobile-tab-bukti">Analisis Bukti</button>
+            <button class="mobile-tab-btn" id="mobile-tab-deduksi">Papan Deduksi</button>
+        </div>
         
         <!-- ==========================================
              COLUMN 1: SIDEBAR NAVIGATION (STEEL PANEL)
@@ -145,14 +144,14 @@
                             <div class="autopsy-scan-console">
                                 <div id="autopsy-scan-status" class="autopsy-scan-status-indicator ready">SIAP MELAKUKAN PEMINDAIAN</div>
                                 <div id="autopsy-scan-details" style="font-size: 0.8rem; margin-top: 8px; line-height: 1.5; color: var(--text-secondary);">
-                                    Klik salah satu titik lingkaran merah sensor pada tubuh di samping kanan untuk mendeteksi anomali.
-                                </div>
-                            </div>
+                                     Klik salah satu titik lingkaran merah sensor pada tubuh untuk mendeteksi anomali.
+                                 </div>
+                             </div>
 
-                            <!-- Reagent Test Section (Hidden by default, shown once neck & back scanned) -->
-                            <div id="autopsy-chemical-section" class="hidden" style="margin-top: 24px; border-top: 1px dashed var(--border-color); padding-top: 20px;">
-                                <h4 style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--text-primary); margin-bottom: 12px;">Pengujian Toksikologi Cairan Paru</h4>
-                                <div style="display: grid; grid-template-columns: 1fr 120px; gap: 16px; align-items: start;">
+                             <!-- Reagent Test Section (Hidden by default, shown once neck & back scanned) -->
+                             <div id="autopsy-chemical-section" class="hidden" style="margin-top: 24px; border-top: 1px dashed var(--border-color); padding-top: 20px;">
+                                 <h4 style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--text-primary); margin-bottom: 12px;">Pengujian Toksikologi Cairan Paru</h4>
+                                 <div class="reagent-test-grid">
                                     
                                     <!-- Dropdowns and Reagent Button -->
                                     <div style="display: flex; flex-direction: column; gap: 10px;">
@@ -275,7 +274,7 @@
 
                             <div style="display: flex; flex-direction: column; gap: 8px;">
                                 <label class="form-label" for="drawer-suspect-match" style="font-size: 0.7rem; color: var(--text-secondary);">Cocokkan noda cat merah laci dengan aktivitas tersangka:</label>
-                                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                <div class="drawer-select-wrapper">
                                     <select id="drawer-suspect-match" class="form-select" style="font-size: 0.75rem; flex: 1; min-width: 200px; background: #ffffff; color: #000000; border: 1px solid #cbd5e1;">
                                         <option value="">-- Pilih Aktivitas Cocok --</option>
                                         <option value="suspect-a-pc">Tersangka A: Sedang merakit PC dengan kabel merah di kamarnya.</option>
