@@ -1,0 +1,99 @@
+/* responsive.css — mobile-first overrides to make BerkasPerkara mobile-friendly
+   Created by GitHub Copilot assistant to provide non-destructive overrides
+*/
+:root{--border-color:#cbd5e1}
+
+/* Prevent text-size auto-adjust and ensure media scale */
+html,body{ -webkit-text-size-adjust:100%; }
+
+/* Make all media responsive */
+img,picture,video,iframe,svg{ max-width:100%; height:auto; display:block; }
+
+/* Utility used by JS to hide panels on small screens */
+.hidden-mobile{ display:none !important; }
+
+/* Improve tappable target sizes globally */
+button, .verify-btn, .solve-btn, .modal-action-btn, .nav-toggle{ min-height:44px; padding:0.6rem 0.9rem; }
+
+/* Mobile & Tablet breakpoint */
+@media (max-width: 1100px){
+  body{
+    overflow: auto; /* allow page scroll on small screens */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Show mobile header and sub-nav which are hidden on desktop */
+  .mobile-header-tabs{ display:flex; align-items:center; }
+  .mobile-sub-nav{ display:flex; }
+
+  /* Stack layout vertically so panels flow on small screens */
+  .workspace-container{
+    display: block;
+    width: 100%;
+    min-height: 100dvh;
+    height: auto;
+  }
+
+  /* Hide the large left sidebar on mobile to free space */
+  .sidebar{ display: none; }
+
+  /* Main workspace and right-panel become full-width stacked blocks */
+  .main-workspace, .right-panel{
+    width: 100%;
+    box-shadow: none;
+    border-left: none;
+    border-right: none;
+    padding: 12px;
+  }
+
+  /* The app's JS toggles .hidden-mobile to switch which panel is visible */
+  .main-workspace.hidden-mobile, .right-panel.hidden-mobile{ display: none !important; }
+
+  /* Make tab panels full-width and remove visual tilt and heavy shadows */
+  .tab-panel{
+    transform: none !important;
+    padding: 20px !important;
+    margin: 0 0 12px 0 !important;
+    max-width: none !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    border: 1px solid var(--border-color) !important;
+  }
+
+  .workspace-scroll{ padding: 16px !important; }
+
+  /* Autopsy layout stacks the two columns */
+  .autopsy-layout{ display: grid !important; grid-template-columns: 1fr !important; gap: 12px !important; }
+  .lividity-card{ width: 100% !important; order: 2; }
+  .body-graphic-container{ width: 100% !important; height: auto !important; }
+
+  /* Graphology and documents — single column */
+  .paper-docs-grid{ grid-template-columns: 1fr !important; }
+  .handwritten-paper{ min-height: auto !important; padding: 12px !important; }
+  .handwritten-paper p{ font-size: 1.1rem !important; }
+
+  /* BAP layout: stack witness selector above transcript */
+  .bap-layout{ grid-template-columns: 1fr !important; }
+  .witness-selector-box{ flex-direction: row !important; gap: 8px !important; overflow-x: auto; }
+  .witness-tab{ white-space: nowrap; }
+
+  /* Notepad: make textarea usable on mobile */
+  .notepad-textarea{ width: 100% !important; min-height: 120px !important; resize: vertical !important; padding: 10px !important; border-radius: 6px !important; border: 1px solid var(--border-color) !important; }
+
+  /* Tables: avoid horizontal overflow by making them scroll within container */
+  .log-table-container{ overflow-x: auto !important; }
+  .log-table th, .log-table td{ font-size: 0.72rem !important; padding: 8px !important; }
+
+  /* Reduce decorative clutter on mobile */
+  .paperclip{ display: none !important; }
+  .secret-stamp{ opacity: 0.06 !important; transform: none !important; left: 12px !important; top: 12px !important; }
+  .folder-tab{ position: static !important; margin-bottom: 8px !important; }
+}
+
+/* Small phones */
+@media (max-width: 420px){
+  html{ font-size: 15px; }
+  .mobile-tab-btn{ font-size: 0.75rem; }
+  .sub-nav-btn{ padding: 6px 10px; font-size: 0.72rem; }
+  .verify-btn, .solve-btn{ font-size: 0.95rem; }
+}
