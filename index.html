@@ -197,18 +197,19 @@
                         <div class="lividity-card">
                             <div class="lividity-title">Pemindai Lokasi Sensorik</div>
                             <div class="body-graphic-container">
-                                <!-- Silhouette SVG -->
                                 <svg class="body-silhouette" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="50" cy="30" r="18" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
                                     <path d="M30 60 C30 60, 20 80, 20 120 C20 160, 35 190, 50 190 C65 190, 80 160, 80 120 C80 80, 70 60, 70 60 Z" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2"/>
                                     <path d="M20 65 L5 120 M80 65 L95 120" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round"/>
                                     <path d="M35 190 L35 200 M65 190 L65 200" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round"/>
 
+                                    <!-- Lebam Mayat Posterior Highlight (Dashed Red Box) -->
+                                    <rect x="28" y="75" width="44" height="90" rx="6" fill="#b91c1c" fill-opacity="0.08" stroke="#b91c1c" stroke-width="1.5" stroke-dasharray="3 3" pointer-events="none" />
+
                                     <circle class="autopsy-hotspot" data-area="neck" cx="50" cy="50" r="6" />
                                     <circle class="autopsy-hotspot" data-area="back" cx="50" cy="110" r="10" />
                                     <circle class="autopsy-hotspot" data-area="legs" cx="50" cy="180" r="8" />
                                 </svg>
-                                <div class="body-lividity-highlight" style="z-index: 1;"></div>
                             </div>
                             <div class="lividity-indicator-label">Pindai Titik Merah Sensor</div>
                         </div>
@@ -534,7 +535,7 @@
             <h4 class="modal-subtitle" style="color: var(--accent-maroon);">Kasus Kamar 404: Dugaan Rekayasa Bunuh Diri</h4>
             
             <div class="modal-body" style="max-height: 350px;">
-                <p>
+                <p id="briefing-greeting">
                     Selamat sore detektif Juni.
                 </p>
                 <p>
