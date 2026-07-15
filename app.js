@@ -679,8 +679,26 @@ class GameController {
       this.rightPanel.classList.add("hidden-mobile");
     }
 
+    this.updateBriefingGreeting();
     this.updateAutopsyConclusions();
     this.renderClueBinder();
+  }
+
+  updateBriefingGreeting() {
+    const greetingEl = document.getElementById("briefing-greeting");
+    if (!greetingEl) return;
+
+    const hour = new Date().getHours();
+    let greeting = "Selamat malam";
+    if (hour >= 0 && hour < 11) {
+      greeting = "Selamat pagi";
+    } else if (hour >= 11 && hour < 15) {
+      greeting = "Selamat siang";
+    } else if (hour >= 15 && hour < 19) {
+      greeting = "Selamat sore";
+    }
+    
+    greetingEl.textContent = `${greeting} detektif Juni.`;
   }
 
   hideBriefing() {
